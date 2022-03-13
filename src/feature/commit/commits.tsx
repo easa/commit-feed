@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import CommitComponent from './commit';
 import { CommitNode } from './commit.type';
-import Layout from './layout';
 
 type Commits = CommitNode[];
 
@@ -25,7 +24,7 @@ export default function CommitsComponent({ repoAddress, parameters }: {
   } = useQuery<Commits, Error>('commits', getCommits(repoAddress, parameters));
   useEffect(() => { refetch(); }, [repoAddress, parameters]);
   return (
-    <Layout>
+    <>
       {error && (
         <p>
           Error:
@@ -40,6 +39,6 @@ export default function CommitsComponent({ repoAddress, parameters }: {
           <CommitComponent key={node.sha} commitNode={node} />
         ))
         : (<p>No commits found</p>)}
-    </Layout>
+    </>
   );
 }
