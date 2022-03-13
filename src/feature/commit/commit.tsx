@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
+import dateFormat from 'dateformat';
+
 import {
   Paper, Avatar, Typography, Grid,
 } from '@mui/material';
@@ -21,7 +23,7 @@ export default function CommitComponent({ commitNode }: { commitNode: CommitNode
       </Grid>
       <Typography variant="body1">{message}</Typography>
       <Typography variant="subtitle1">{sha}</Typography>
-      <Typography variant="subtitle1">{date}</Typography>
+      <Typography variant="subtitle1">{dateFormat(date, 'fullDate')}</Typography>
     </Paper>
   );
 }
