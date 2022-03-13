@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import CommitComponent from './commit';
@@ -32,7 +32,9 @@ export default function CommitsComponent() {
             {data.map((node) => (
               <CommitComponent key={node.sha} commitNode={node} />
             ))}
-            <Button onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
+            <Box m="auto" mt={2}>
+              <Button variant="outlined" onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
+            </Box>
           </>
         )
         : (<p>No commits found</p>)}
