@@ -9,7 +9,7 @@ import { CommitNode } from './commit.type';
 
 export default function CommitComponent({ commitNode }: { commitNode: CommitNode }) {
   const {
-    author: { avatar_url, login }, commit: { message, committer: { date } }, sha,
+    commit: { message, committer: { date } }, sha, committer: { login, avatar_url },
   } = commitNode;
   return (
     <Paper variant="outlined" sx={{ width: '100%', p: 2 }}>
