@@ -2,22 +2,30 @@ import React, { useState } from 'react';
 import { Button, Grid, TextField } from '@mui/material';
 
 export default function SearchInputs({ onSubmit }: {
-  onSubmit: (
-    url: string,
-    params: {
-      [key: string]: string
-    }) => void
+  onSubmit: (opt: { org: string; repo: string; }) => void
 }) {
-  const [text, setText] = useState('m3db/m3');
-  const [page, setPage] = useState('1');
-  const [branch, setBranch] = useState('master');
+  const [org, setOrg] = useState('m3db');
+  const [repo, setRepo] = useState('m3');
   const handleFetch = () => {
-    const url = `https://api.github.com/repos/${text}/commits`;
-    onSubmit(url, { page, per_page: '20', sha: branch });
+    onSubmit({ org, repo });
   };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={5}>
+
+      <Grid item xs={5} sm={5}>
+        <TextField
+          size="small"
+          name="org"
+          variant="outlined"
+          required
+          fullWidth
+          label="github organization"
+          autoFocus
+          value={org}
+          onChange={(e) => setOrg(e.target.value)}
+        />
+      </Grid>
+      <Grid item xs={5} sm={5}>
         <TextField
           size="small"
           name="stepValue"
@@ -26,37 +34,11 @@ export default function SearchInputs({ onSubmit }: {
           fullWidth
           label="github repository"
           autoFocus
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={repo}
+          onChange={(e) => setRepo(e.target.value)}
         />
       </Grid>
-      <Grid item xs={12} sm={3}>
-        <TextField
-          size="small"
-          name="branch"
-          variant="outlined"
-          required
-          fullWidth
-          label="branch"
-          autoFocus
-          value={branch}
-          onChange={(e) => setBranch(e.target.value)}
-        />
-      </Grid>
-      <Grid item xs={12} sm={2}>
-        <TextField
-          size="small"
-          name="page"
-          variant="outlined"
-          required
-          fullWidth
-          label="page"
-          autoFocus
-          value={page}
-          onChange={(e) => setPage(e.target.value)}
-        />
-      </Grid>
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={2} sm={2}>
         <Button variant="contained" onClick={handleFetch}>fetch</Button>
       </Grid>
     </Grid>
