@@ -16,7 +16,7 @@ export default function CommitsComponent() {
   }
   const [page, setPage] = useState(1);
   const [commits, setCommits] = useState<Commits>([]);
-  const { data, error, isLoading } = useQuery<Commits, Error>(['commits', page], getCommitsQuery({ org, repo, page }));
+  const { data, error, isLoading } = useQuery<Commits, Error>(['commits', page, org, repo], getCommitsQuery({ org, repo, page }));
   useEffect(() => {
     if (data) {
       setCommits(produce((draft) => {
