@@ -3,7 +3,7 @@ import React from 'react';
 import dateFormat from 'dateformat';
 
 import {
-  Paper, Avatar, Typography, Grid,
+  Paper, Avatar, Typography, Grid, Tooltip,
 } from '@mui/material';
 import { CommitNode } from './commit.type';
 
@@ -18,12 +18,16 @@ export default function CommitComponent({ commitNode }: { commitNode: CommitNode
           <Avatar src={avatar_url} />
         </Grid>
         <Grid item xs={8} sm={10}>
-          <Typography variant="h5" overflow="hidden" sx={{ m: 2 }}>{login}</Typography>
+          <Typography variant="h5" noWrap>{login}</Typography>
         </Grid>
       </Grid>
       <Typography variant="body1">{message}</Typography>
-      <Typography variant="subtitle1">{sha}</Typography>
-      <Typography variant="subtitle1">{dateFormat(date, 'fullDate')}</Typography>
+      <div style={{ display: 'flex', justifyContent: 'space-between', color: 'gray' }}>
+        <Tooltip title="copy commit SHA">
+          <Typography variant="caption" sx={{ cursor: 'pointer' }} onClick={() => { navigator.clipboard.writeText(sha); }}>{sha}</Typography>
+        </Tooltip>
+        <Typography variant="caption">{dateFormat(date, 'fullDate')}</Typography>
+      </div>
     </Paper>
   );
 }
