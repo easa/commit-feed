@@ -1,28 +1,22 @@
 import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import CommitComponent from './commit';
 import { CommitNode } from './commit.type';
+import getCommitsQuery from './services/getCommitsQuery';
 
 type Commits = CommitNode[];
 
-const getCommits = (uri: string, params: { [key: string]: string }) => async () => {
-  const url = new URL(uri);
-  Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
+export default function CommitsComponent() {
+  const { org, repo } = useParams();
+  if (org === undefined || repo === undefined) {
+    return null;
+  }
 
-  return fetch(url.toString(), {
-    headers: {
-      Accept: 'application/vnd.github.v3+json',
-    },
-  }).then((res) => res.json());
-};
-
-export default function CommitsComponent({ repoAddress, parameters }: {
-  repoAddress: string; parameters: { [key: string]: string };
-}) {
   const {
     data, error, isLoading, refetch,
-  } = useQuery<Commits, Error>('commits', getCommits(repoAddress, parameters));
-  useEffect(() => { refetch(); }, [repoAddress, parameters]);
+  } = useQuery<Commits, Error>('commits', getCommitsQuery({ org, repo }));
+  useEffect(() => { refetch(); }, [org, repo]);
   return (
     <>
       {error && (
