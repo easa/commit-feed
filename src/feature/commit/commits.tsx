@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Box } from '@mui/material';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import produce from 'immer';
 import CommitComponent from './commit';
 import { CommitNode } from './commit.type';
 import getCommitsQuery from './services/getCommitsQuery';
@@ -14,7 +15,15 @@ export default function CommitsComponent() {
     return null;
   }
   const [page, setPage] = useState(1);
+  const [commits, setCommits] = useState<Commits>([]);
   const { data, error, isLoading } = useQuery<Commits, Error>(['commits', page], getCommitsQuery({ org, repo, page }));
+  useEffect(() => {
+    if (data) {
+      setCommits(produce((draft) => {
+        draft.splice(draft.length, 0, ...data);
+      }));
+    }
+  }, [data]);
   useEffect(() => { setPage(1); }, [org, repo]);
   return (
     <>
@@ -26,18 +35,19 @@ export default function CommitsComponent() {
         </p>
       )}
       {isLoading && <p>Loading...</p>}
-      {data && data.length
-        ? (
-          <>
-            {data.map((node) => (
-              <CommitComponent key={node.sha} commitNode={node} />
-            ))}
+      {commits && commits.length && (
+        <>
+          {' '}
+          {commits.map((node) => (
+            <CommitComponent key={node.sha} commitNode={node} />
+          ))}
+          {data?.length && (
             <Box m="auto" mt={2}>
               <Button variant="outlined" onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
             </Box>
-          </>
-        )
-        : (<p>No commits found</p>)}
+          )}
+        </>
+      )}
     </>
   );
 }
