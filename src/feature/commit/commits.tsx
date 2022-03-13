@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import CommitComponent from './commit';
@@ -12,11 +13,9 @@ export default function CommitsComponent() {
   if (org === undefined || repo === undefined) {
     return null;
   }
-
-  const {
-    data, error, isLoading, refetch,
-  } = useQuery<Commits, Error>('commits', getCommitsQuery({ org, repo }));
-  useEffect(() => { refetch(); }, [org, repo]);
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useQuery<Commits, Error>(['commits', page], getCommitsQuery({ org, repo, page }));
+  useEffect(() => { setPage(1); }, [org, repo]);
   return (
     <>
       {error && (
@@ -27,11 +26,15 @@ export default function CommitsComponent() {
         </p>
       )}
       {isLoading && <p>Loading...</p>}
-      {data
-        && data.length
-        ? data.map((node) => (
-          <CommitComponent key={node.sha} commitNode={node} />
-        ))
+      {data && data.length
+        ? (
+          <>
+            {data.map((node) => (
+              <CommitComponent key={node.sha} commitNode={node} />
+            ))}
+            <Button onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
+          </>
+        )
         : (<p>No commits found</p>)}
     </>
   );
