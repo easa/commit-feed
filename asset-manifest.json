@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/commit-feed/static/css/main.6835612f.chunk.css",
-    "main.js": "/commit-feed/static/js/main.0298f637.chunk.js",
-    "main.js.map": "/commit-feed/static/js/main.0298f637.chunk.js.map",
+    "main.js": "/commit-feed/static/js/main.c12a1cb4.chunk.js",
+    "main.js.map": "/commit-feed/static/js/main.c12a1cb4.chunk.js.map",
     "runtime-main.js": "/commit-feed/static/js/runtime-main.9b0c548f.js",
     "runtime-main.js.map": "/commit-feed/static/js/runtime-main.9b0c548f.js.map",
-    "static/js/2.9c3c5136.chunk.js": "/commit-feed/static/js/2.9c3c5136.chunk.js",
-    "static/js/2.9c3c5136.chunk.js.map": "/commit-feed/static/js/2.9c3c5136.chunk.js.map",
+    "static/js/2.2b166fcd.chunk.js": "/commit-feed/static/js/2.2b166fcd.chunk.js",
+    "static/js/2.2b166fcd.chunk.js.map": "/commit-feed/static/js/2.2b166fcd.chunk.js.map",
     "static/js/3.46c55ea9.chunk.js": "/commit-feed/static/js/3.46c55ea9.chunk.js",
     "static/js/3.46c55ea9.chunk.js.map": "/commit-feed/static/js/3.46c55ea9.chunk.js.map",
     "index.html": "/commit-feed/index.html",
     "static/css/main.6835612f.chunk.css.map": "/commit-feed/static/css/main.6835612f.chunk.css.map",
-    "static/js/2.9c3c5136.chunk.js.LICENSE.txt": "/commit-feed/static/js/2.9c3c5136.chunk.js.LICENSE.txt"
+    "static/js/2.2b166fcd.chunk.js.LICENSE.txt": "/commit-feed/static/js/2.2b166fcd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9b0c548f.js",
-    "static/js/2.9c3c5136.chunk.js",
+    "static/js/2.2b166fcd.chunk.js",
     "static/css/main.6835612f.chunk.css",
-    "static/js/main.0298f637.chunk.js"
+    "static/js/main.c12a1cb4.chunk.js"
   ]
 }
