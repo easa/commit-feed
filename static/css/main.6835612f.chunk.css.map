@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/feature/layout/center.module.css"],"names":[],"mappings":"AAAA,sBACE,YAAqB,CACrB,sBAAuB,CACvB,kBAAuB,CACvB,YACF","file":"main.6835612f.chunk.css","sourcesContent":[".center {\n  display        : flex;\n  justify-content: center;\n  align-items    : center;\n  height         : 100vh;\n}"]}
