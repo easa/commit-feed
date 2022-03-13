@@ -35,19 +35,21 @@ export default function CommitsComponent() {
         </p>
       )}
       {isLoading && <p>Loading...</p>}
-      {commits && commits.length && (
+      {commits && commits.length ? (
         <>
           {' '}
           {commits.map((node) => (
             <CommitComponent key={node.sha} commitNode={node} />
           ))}
-          {data?.length && (
-            <Box m="auto" mt={2}>
-              <Button variant="outlined" onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
-            </Box>
-          )}
+          {data?.length
+            ? (
+              <Box m="auto" mt={2}>
+                <Button variant="outlined" onClick={() => { setPage((prev) => prev + 1); }}>load more</Button>
+              </Box>
+            )
+            : null}
         </>
-      )}
+      ) : null}
     </>
   );
 }
