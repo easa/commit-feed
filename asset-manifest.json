@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/commit-feed/static/js/main.0084b276.chunk.js",
-    "main.js.map": "/commit-feed/static/js/main.0084b276.chunk.js.map",
-    "runtime-main.js": "/commit-feed/static/js/runtime-main.1bd25082.js",
-    "runtime-main.js.map": "/commit-feed/static/js/runtime-main.1bd25082.js.map",
-    "static/js/2.f937c06b.chunk.js": "/commit-feed/static/js/2.f937c06b.chunk.js",
-    "static/js/2.f937c06b.chunk.js.map": "/commit-feed/static/js/2.f937c06b.chunk.js.map",
-    "static/js/3.56ef509f.chunk.js": "/commit-feed/static/js/3.56ef509f.chunk.js",
-    "static/js/3.56ef509f.chunk.js.map": "/commit-feed/static/js/3.56ef509f.chunk.js.map",
+    "main.js": "/commit-feed/static/js/main.f7730435.chunk.js",
+    "main.js.map": "/commit-feed/static/js/main.f7730435.chunk.js.map",
+    "runtime-main.js": "/commit-feed/static/js/runtime-main.ed80b46d.js",
+    "runtime-main.js.map": "/commit-feed/static/js/runtime-main.ed80b46d.js.map",
+    "static/js/2.88e099d8.chunk.js": "/commit-feed/static/js/2.88e099d8.chunk.js",
+    "static/js/2.88e099d8.chunk.js.map": "/commit-feed/static/js/2.88e099d8.chunk.js.map",
+    "static/js/3.20cef033.chunk.js": "/commit-feed/static/js/3.20cef033.chunk.js",
+    "static/js/3.20cef033.chunk.js.map": "/commit-feed/static/js/3.20cef033.chunk.js.map",
     "index.html": "/commit-feed/index.html",
-    "static/js/2.f937c06b.chunk.js.LICENSE.txt": "/commit-feed/static/js/2.f937c06b.chunk.js.LICENSE.txt"
+    "static/js/2.88e099d8.chunk.js.LICENSE.txt": "/commit-feed/static/js/2.88e099d8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1bd25082.js",
-    "static/js/2.f937c06b.chunk.js",
-    "static/js/main.0084b276.chunk.js"
+    "static/js/runtime-main.ed80b46d.js",
+    "static/js/2.88e099d8.chunk.js",
+    "static/js/main.f7730435.chunk.js"
   ]
 }
