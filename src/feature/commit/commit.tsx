@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
 import {
   Paper, Avatar, Typography, Grid,
@@ -5,8 +6,9 @@ import {
 import { CommitNode } from './commit.type';
 
 export default function CommitComponent({ commitNode }: { commitNode: CommitNode }) {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const { author: { avatar_url, login }, commit: { message }, sha } = commitNode;
+  const {
+    author: { avatar_url, login }, commit: { message, committer: { date } }, sha,
+  } = commitNode;
   return (
     <Paper variant="outlined" sx={{ width: '100%', p: 2 }}>
       <Grid container columns={{ xs: 12, md: 6 }}>
@@ -19,6 +21,7 @@ export default function CommitComponent({ commitNode }: { commitNode: CommitNode
       </Grid>
       <Typography variant="body1">{message}</Typography>
       <Typography variant="subtitle1">{sha}</Typography>
+      <Typography variant="subtitle1">{date}</Typography>
     </Paper>
   );
 }

@@ -1,39 +1,28 @@
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import CommitsComponent from 'feature/commit/commits';
-import {
-  Button, Container, CssBaseline, Grid, TextField,
-} from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
+import SearchInputs from 'feature/search/inputs';
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [text, setText] = useState('https://api.github.com/repos/m3db/m3/commits');
-  const [repoAddress, setRepoAddress] = useState(text);
+  const [repoAddress, setRepoAddress] = useState('https://api.github.com/repos/m3db/m3/commits');
+  const [parameters, setParameters] = useState<{ [key: string]: string }>({ page: '1', per_page: '20', sha: 'master' });
+  const handleFetch = (
+    url: string,
+    params: { [key: string]: string },
+  ) => {
+    setRepoAddress(url);
+    setParameters(params);
+  };
   return (
     <QueryClientProvider client={queryClient}>
       <Container component="main" maxWidth="md">
         <h1>commit feed</h1>
         <CssBaseline />
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={10}>
-            <TextField
-              size="small"
-              name="stepValue"
-              variant="outlined"
-              required
-              fullWidth
-              label="repository address"
-              autoFocus
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} sm={2}>
-            <Button variant="contained" onClick={() => { setRepoAddress(text); }}>fetch</Button>
-          </Grid>
-        </Grid>
-        <CommitsComponent repoAddress={repoAddress} />
+        <SearchInputs onSubmit={handleFetch} />
+        <CommitsComponent repoAddress={repoAddress} parameters={parameters} />
       </Container>
     </QueryClientProvider>
   );
